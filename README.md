@@ -9,8 +9,7 @@
 - キーボードナビゲーション（矢印キーでスライド移動）
 - 数字キー（1-9）でスライドに直接ジャンプ
 - スライド進行状況のドット表示とスライド番号インジケーター
-- Reactコンポーネントベースのスライド作成
-- レスポンシブデザイン
+- スライド枚数を起動時に指定可能
 
 ## セットアップ
 
@@ -23,6 +22,18 @@ npm run dev
 ```
 
 ブラウザで [http://localhost:3000](http://localhost:3000) を開くとプレゼンテーションが表示されます。
+
+## 使い方
+
+1. アプリを起動すると、スライド枚数を入力する画面が表示されます
+2. 読み込みたいスライドの枚数（例：10枚）を入力します
+3. 「プレゼンテーションを開始」ボタンをクリックします
+4. 指定した枚数のスライド（1.tsx〜10.tsx）が読み込まれます
+5. ナビゲーション：
+   - **矢印キー**または**前へ/次へボタン**でスライドを移動
+   - **数字キー (1-9)** で対応するスライドに直接ジャンプ
+   - 画面下部の**ドット**をクリックしてスライド間を移動
+6. 画面右上の「リセット」ボタンを押すと、初期設定画面に戻ります
 
 ## スライドの追加方法
 
@@ -70,6 +81,7 @@ src/
 │   ├── Presentation.tsx
 │   ├── SlideContainer.tsx
 │   ├── SlideControls.tsx
+│   ├── SlideSetup.tsx
 │   └── SlideTemplate.tsx
 ├── hooks/
 │   ├── useSlideNavigation.ts
@@ -78,24 +90,8 @@ src/
     └── index.ts
 ```
 
-## 使用方法
+## 注意点
 
-- **矢印キー** または **前へ/次へボタン** でスライドを移動
-- **数字キー (1-9)** で対応するスライドに直接ジャンプ
-- 画面下部の **ドット** をクリックしてスライド間を移動
-- スライド番号インジケーター（例: 3/10）で現在位置を確認
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- スライドファイルは事前に作成しておく必要があります
+- 指定した枚数のスライドが存在しない場合、エラーメッセージが表示されます
+- スライドは最大50枚まで指定可能です
