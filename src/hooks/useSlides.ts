@@ -27,9 +27,9 @@ export function useSlides(totalSlides: number) {
         // 動的インポート処理
         const importSlide = async (id: string): Promise<Slide | null> => {
           try {
-            // 動的インポート
-            const module = await import(`@/app/slides/${id}.tsx`) as SlideModule;
-            const SlideComponent = module.default;
+            // 動的インポート - module変数名を変更
+            const slideModule = await import(`@/app/slides/${id}.tsx`) as SlideModule;
+            const SlideComponent = slideModule.default;
             
             return {
               id,

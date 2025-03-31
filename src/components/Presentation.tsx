@@ -29,8 +29,6 @@ function PresentationView({ totalSlides }: { totalSlides: number }) {
     jumpToSlide 
   } = useSlideNavigation(slides.length);
   
-  const currentSlide = slides[currentSlideIndex] || null;
-
   if (loading) {
     return (
       <div className="flex items-center justify-center w-screen h-screen bg-black text-white">
