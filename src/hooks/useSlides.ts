@@ -6,8 +6,8 @@ type SlideModule = {
   default: React.ComponentType;
 };
 
-// Next.jsのdynamic importを使用してスライドを読み込むために変更
-export function useSlides() {
+// 指定されたスライド枚数に基づいてスライドを読み込む
+export function useSlides(totalSlides: number) {
   const [slides, setSlides] = useState<Slide[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -24,8 +24,7 @@ export function useSlides() {
           return;
         }
 
-        // Next.jsでは動的インポートを使用するため、別の方法でスライドを読み込む
-        // このアプローチはクライアントサイドでのみ動作する
+        // 動的インポート処理
         const importSlide = async (id: string): Promise<Slide | null> => {
           try {
             // 動的インポート
@@ -42,9 +41,10 @@ export function useSlides() {
           }
         };
 
-        // 例としてスライド1から5を読み込む
-        // 実際のアプリでは、APIやファイルシステムを使用して利用可能なスライドを把握する
-        const slideIds = ['1', '2', '3', '4', '5'];
+        // 指定された枚数に基づいてスライドIDを生成
+        const slideIds = Array.from({ length: totalSlides }, (_, i) => (i + 1).toString());
+        
+        // スライドを読み込む
         const loadedSlides = await Promise.all(
           slideIds.map(importSlide)
         );
@@ -64,8 +64,11 @@ export function useSlides() {
       }
     }
 
-    loadSlides();
-  }, []);
+    // totalSlidesが正の値である場合にのみスライドを読み込む
+    if (totalSlides > 0) {
+      loadSlides();
+    }
+  }, [totalSlides]);
 
   return { slides, loading, error };
 } 
