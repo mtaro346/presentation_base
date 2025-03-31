@@ -27,13 +27,13 @@ export function SlideSetup({ onSetupComplete }: SlideSetupProps) {
   };
 
   return (
-    <div className="flex items-center justify-center w-screen h-screen bg-black text-white">
-      <div className="max-w-md w-full p-8 bg-white/10 rounded-lg backdrop-blur-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">プレゼンテーションセットアップ</h1>
+    <div className="flex items-center justify-center w-screen h-screen bg-background text-foreground">
+      <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-md border border-slate-200">
+        <h1 className="text-2xl font-bold mb-6 text-center text-slate-800">プレゼンテーションセットアップ</h1>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="slideCount" className="block mb-2 text-lg">
+            <label htmlFor="slideCount" className="block mb-2 text-lg text-slate-700">
               スライド枚数を入力してください
             </label>
             <input
@@ -43,22 +43,22 @@ export function SlideSetup({ onSetupComplete }: SlideSetupProps) {
               onChange={(e) => setSlideCount(e.target.value)}
               min="1"
               max="50"
-              className="w-full px-4 py-2 bg-white/20 rounded-md text-white border border-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 bg-slate-50 rounded-md text-slate-800 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
-            <p className="mt-2 text-sm text-white/70">
+            <p className="mt-2 text-sm text-slate-600">
               ※ スライドは 1.tsx から {slideCount}.tsx まで読み込まれます
             </p>
           </div>
           
           {error && (
-            <div className="text-red-400 text-sm">
+            <div className="text-red-500 text-sm">
               {error}
             </div>
           )}
           
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
+            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors shadow-sm"
           >
             プレゼンテーションを開始
           </button>

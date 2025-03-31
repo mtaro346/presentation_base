@@ -31,7 +31,7 @@ function PresentationView({ totalSlides }: { totalSlides: number }) {
   
   if (loading) {
     return (
-      <div className="flex items-center justify-center w-screen h-screen bg-black text-white">
+      <div className="flex items-center justify-center w-screen h-screen bg-background text-foreground">
         <p className="text-2xl">読み込み中...</p>
       </div>
     );
@@ -39,12 +39,12 @@ function PresentationView({ totalSlides }: { totalSlides: number }) {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center w-screen h-screen bg-black text-white">
+      <div className="flex items-center justify-center w-screen h-screen bg-background text-foreground">
         <div className="text-center">
           <p className="text-2xl text-red-500">エラー</p>
           <p>{error}</p>
           <button 
-            className="mt-4 px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700"
+            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
             onClick={() => window.location.reload()}
           >
             再試行
@@ -56,12 +56,12 @@ function PresentationView({ totalSlides }: { totalSlides: number }) {
 
   if (slides.length === 0) {
     return (
-      <div className="flex items-center justify-center w-screen h-screen bg-black text-white">
+      <div className="flex items-center justify-center w-screen h-screen bg-background text-foreground">
         <div className="text-center">
           <p className="text-2xl">スライドがありません</p>
           <p className="mt-2">src/app/slides フォルダに数字のファイル名 (1.tsx, 2.tsx, ...) でスライドを追加してください</p>
           <button 
-            className="mt-4 px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700"
+            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
             onClick={() => window.location.reload()}
           >
             初めから始める
@@ -72,7 +72,7 @@ function PresentationView({ totalSlides }: { totalSlides: number }) {
   }
 
   return (
-    <div className="relative w-screen h-screen bg-black text-white overflow-hidden">
+    <div className="relative w-screen h-screen bg-background text-foreground overflow-hidden">
       <div className="w-full h-full">
         {slides.map((slide, index) => (
           <SlideContainer
@@ -92,7 +92,7 @@ function PresentationView({ totalSlides }: { totalSlides: number }) {
       />
       
       <button 
-        className="fixed top-4 right-4 text-sm px-3 py-1 bg-white/10 hover:bg-white/20 rounded-md"
+        className="fixed top-4 right-4 text-sm px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-sm"
         onClick={() => window.location.reload()}
       >
         リセット

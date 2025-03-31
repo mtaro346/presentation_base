@@ -10,7 +10,7 @@ export function SlideContainer({ slide, isActive }: SlideContainerProps) {
   if (!slide) {
     return (
       <div className="flex items-center justify-center w-full h-full">
-        <p className="text-2xl text-white/50">スライドが見つかりません</p>
+        <p className="text-2xl text-slate-400">スライドが見つかりません</p>
       </div>
     );
   }
